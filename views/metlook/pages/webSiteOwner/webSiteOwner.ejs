@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <% include ../../partials/header.ejs %>
+    <link href="../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    </head>
+<body class="theme-blue-grey">
+    <% include ../../partials/page_loader.ejs %>
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!--Search bar-->
+    <% include ../../partials/search_bar.ejs %>
+   
+    <!-- Top Bar -->
+    <% include ../../partials/navigation.ejs %>
+    
+    <!-- Left side bar -->
+    <% include ../../partials/left_sidebar.ejs %>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2><DASHBOARD></h2>
+            </div>
+
+            <!-- Widgets -->
+            <div class="row clearfix">
+                
+
+                <% topPanel.forEach(function(topWidget) { %>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box <%=topWidget.color %> hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons"><%=topWidget.icon %></i>
+                            </div>
+                            <div class="content">
+                                <div class="text"><%=topWidget.name %></div>
+                                <div class="number"><%=topWidget.value %></div>
+                            </div>
+                        </div>
+                    </div>
+                <%}); %>
+            </div>
+            <!-- #END# Widgets -->
+            <!-- CPU Usage -->
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <% include ./component/siteOwner_adblock_chart.ejs %>
+                </div>
+            </div>
+            <!-- #END# CPU Usage -->
+            <div class="row clearfix">
+                <!-- Visitors -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <% include ./component/visitors.ejs %>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Visitors -->
+                <!-- Latest Social Trends -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="body bg-cyan">
+                            <% include ./component/incomeSummary.ejs %>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Latest Social Trends -->
+                <!-- Browser Usage -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <% include ./component/incomeContributions.ejs %>  
+                    </div>
+                </div>
+                <!-- #END# Browser Usage -->
+            </div>
+        </div>
+    </section>
+
+    <% include ../../partials/scripts.ejs %>
+
+</body>
+
+</html>
+
+<!--
+
+    https://gurayyarar.github.io/AdminBSBMaterialDesign/pages/ui/icons.html
+-->
